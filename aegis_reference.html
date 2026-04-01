@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEGIS AI v6.0 - Reference Sheet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 9pt;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 15mm;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                padding: 10mm;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .shield {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0066cc, #004499);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #0066cc;
+            font-size: 24pt;
+            margin: 0;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 10pt;
+            margin-top: 3px;
+        }
+        
+        h2 {
+            color: #0066cc;
+            font-size: 11pt;
+            border-bottom: 1px solid #0066cc;
+            padding-bottom: 3px;
+            margin: 12px 0 8px 0;
+        }
+        
+        h3 {
+            font-size: 10pt;
+            color: #444;
+            margin: 8px 0 4px 0;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .agent-card {
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 6px;
+        }
+        
+        .conservator {
+            background: #fff0f0;
+            border-left: 3px solid #c83232;
+        }
+        
+        .preventer {
+            background: #f0fff0;
+            border-left: 3px solid #32c832;
+        }
+        
+        .investigator {
+            background: #f0f5ff;
+            border-left: 3px solid #3264c8;
+        }
+        
+        .agent-title {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .conservator .agent-title { color: #c83232; }
+        .preventer .agent-title { color: #32a832; }
+        .investigator .agent-title { color: #3264c8; }
+        
+        .personality {
+            font-size: 8pt;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .agent-desc {
+            font-size: 8.5pt;
+            margin-top: 3px;
+            color: #444;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8.5pt;
+        }
+        
+        th {
+            background: #0066cc;
+            color: white;
+            text-align: left;
+            padding: 4px 6px;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 3px 6px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        
+        .cmd {
+            font-family: 'SF Mono', Monaco, monospace;
+            color: #0066cc;
+            font-weight: 600;
+        }
+        
+        .status-box {
+            border-radius: 4px;
+            padding: 6px 8px;
+            margin: 4px 0;
+            font-size: 8.5pt;
+        }
+        
+        .stable {
+            background: #e8f5e8;
+            border-left: 3px solid #32a832;
+        }
+        
+        .warning {
+            background: #fff8e0;
+            border-left: 3px solid #e6a000;
+        }
+        
+        .critical {
+            background: #ffe8e8;
+            border-left: 3px solid #c83232;
+        }
+        
+        .metrics-table {
+            font-size: 8pt;
+        }
+        
+        .metrics-table th {
+            background: #444;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 7pt;
+            color: #888;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+        
+        ul {
+            margin-left: 15px;
+            font-size: 8.5pt;
+        }
+        
+        li {
+            margin-bottom: 2px;
+        }
+        
+        .highlight {
+            background: #fff8dc;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12pt;
+            font-weight: 600;
+        }
+        
+        .print-btn:hover {
+            background: #004499;
+        }
+        
+        .bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        
+        .green { background: #32a832; }
+        .yellow { background: #e6a000; }
+        .red { background: #c83232; }
+    </style>
+</head>
+<body>
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Print to PDF</button>
+    
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="shield">🛡️</div>
+                <div>
+                    <h1>AEGIS AI</h1>
+                    <div class="subtitle">v6.0 Enhanced Intelligence Reference Sheet</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="left-col">
+                <h2>🧠 THE THREE AGENTS</h2>
+                
+                <div class="agent-card conservator">
+                    <div class="agent-title">
+                        CONSERVATOR
+                        <span class="personality">Risk-Averse</span>
+                    </div>
+                    <div class="agent-desc">
+                        Waits for sustained critical issues. Acts only at 95%+ disk for 5+ minutes. High confidence in waiting.
+                    </div>
+                </div>
+                
+                <div class="agent-card preventer">
+                    <div class="agent-title">
+                        PREVENTER
+                        <span class="personality">Proactive</span>
+                    </div>
+                    <div class="agent-desc">
+                        Prevents problems before they occur. Monitors velocity. Early intervention at 80%+.
+                    </div>
+                </div>
+                
+                <div class="agent-card investigator">
+                    <div class="agent-title">
+                        INVESTIGATOR
+                        <span class="personality">Analytical</span>
+                    </div>
+                    <div class="agent-desc">
+                        Finds patterns and root causes. Detects anomalies. Conservative when uncertain.
+                    </div>
+                </div>
+                
+                <p style="font-size: 8pt; margin-top: 6px;">
+                    <strong>Consensus:</strong> Agents vote with confidence-weighted scores. 50%+ agreement required for action.
+                </p>
+
+                <h2>⚡ ESSENTIAL COMMANDS</h2>
+                <table>
+                    <tr>
+                        <th>Command</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr><td><span class="cmd">aegis status</span></td><td>Quick health check</td></tr>
+                    <tr><td><span class="cmd">aegis forecast</span></td><td>Resource predictions</td></tr>
+                    <tr><td><span class="cmd">aegis agents</span></td><td>See agent votes/status</td></tr>
+                    <tr><td><span class="cmd">aegis learn</span></td><td>What Aegis learned</td></tr>
+                    <tr><td><span class="cmd">aegis leaks</span></td><td>Memory leak detection</td></tr>
+                    <tr><td><span class="cmd">aegis purge</span></td><td>Free RAM immediately</td></tr>
+                    <tr><td><span class="cmd">aegis clean disk</span></td><td>Emergency cleanup</td></tr>
+                    <tr><td><span class="cmd">aegis enable auto</span></td><td>Auto-actions ON</td></tr>
+                    <tr><td><span class="cmd">aegis disable auto</span></td><td>Auto-actions OFF</td></tr>
+                    <tr><td><span class="cmd">aegis help</span></td><td>Full command list</td></tr>
+                </table>
+
+                <h2>📊 READING FORECASTS</h2>
+                
+                <div class="status-box stable">
+                    <strong>STABLE:</strong> "Disk stable at 45%"<br>
+                    → No action needed
+                </div>
+                
+                <div class="status-box warning">
+                    <strong>WARNING:</strong> "Disk critical in 45min"<br>
+                    → Plan cleanup within 30min
+                </div>
+                
+                <div class="status-box critical">
+                    <strong>CRITICAL:</strong> "Disk critical in 5min"<br>
+                    → <strong>ACT NOW!</strong> Run cleanup immediately
+                </div>
+            </div>
+
+            <div class="right-col">
+                <h2>🎓 TEACHING AEGIS</h2>
+                <p style="font-size: 8.5pt; margin-bottom: 6px;">Aegis learns from your behavior:</p>
+                <ul>
+                    <li><strong>Manual clean at 85%</strong> → Learns your threshold</li>
+                    <li><strong>Ignore alerts 3x</strong> → Raises threshold</li>
+                    <li><strong>Actions succeed</strong> → Agent accuracy ↑</li>
+                    <li><strong>Actions fail</strong> → Agent accuracy ↓</li>
+                </ul>
+                <p style="font-size: 8pt; margin-top: 6px;">
+                    Check: <span class="cmd">aegis learn</span>
+                </p>
+
+                <h2>🎯 WHEN TO USE WHAT</h2>
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Command</th>
+                    </tr>
+                    <tr><td>Morning check</td><td><span class="cmd">aegis status</span></td></tr>
+                    <tr><td>"Will I run out?"</td><td><span class="cmd">aegis forecast</span></td></tr>
+                    <tr><td>System sluggish</td><td><span class="cmd">aegis leaks</span> → <span class="cmd">purge</span></td></tr>
+                    <tr><td>Before meeting</td><td><span class="cmd">aegis disable auto</span></td></tr>
+                    <tr><td>After meeting</td><td><span class="cmd">aegis enable auto</span></td></tr>
+                    <tr><td>"Why did it do that?"</td><td><span class="cmd">aegis agents</span></td></tr>
+                    <tr><td>Low disk space</td><td><span class="cmd">aegis clean disk</span></td></tr>
+                </table>
+
+                <h2>📈 AGENT ACCURACY</h2>
+                <p style="font-size: 8.5pt; margin-bottom: 6px;">Watch for accuracy scores:</p>
+                <table class="metrics-table">
+                    <tr>
+                        <th style="width: 30px;"></th>
+                        <th>Score</th>
+                        <th>Meaning</th>
+                    </tr>
+                    <tr>
+                        <td><span class="bullet green"></span></td>
+                        <td>70%+</td>
+                        <td>Trust this agent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="bullet yellow"></span></td>
+                        <td>50-70%</td>
+                        <td>Learning...</td>
+                    </tr>
+                    <tr>
+                        <td><span class="bullet red"></span></td>
+                        <td>&lt;50%</td>
+                        <td>Needs tuning</td>
+                    </tr>
+                </table>
+                
+                <p style="font-size: 8pt; margin-top: 6px;">
+                    Check stats: <span class="cmd">aegis agents</span>
+                </p>
+
+                <h2>⚠️ KEY METRICS</h2>
+                <table class="metrics-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Warning</th>
+                        <th>Critical</th>
+                    </tr>
+                    <tr><td>Disk</td><td>75%</td><td>90%</td></tr>
+                    <tr><td>RAM</td><td>70%</td><td>85%</td></tr>
+                    <tr><td>CPU</td><td>70%</td><td>90%</td></tr>
+                </table>
+                <p style="font-size: 7.5pt; color: #666; margin-top: 4px;">
+                    Thresholds adapt based on your behavior
+                </p>
+
+                <h2>✅ BEST PRACTICES</h2>
+                <p style="font-size: 8.5pt;"><strong>DO:</strong></p>
+                <ul>
+                    <li>Check <span class="cmd">aegis forecast</span> before long tasks</li>
+                    <li>Let auto-actions run (they learn!)</li>
+                    <li>Use <span class="cmd">aegis leaks</span> when RAM high</li>
+                    <li>Disable auto before critical work</li>
+                </ul>
+                
+                <p style="font-size: 8.5pt;"><strong>DON'T:</strong></p>
+                <ul>
+                    <li>Panic if agents disagree (consensus protects you)</li>
+                    <li>Ignore critical forecasts</li>
+                    <li>Always disable auto (prevents learning)</li>
+                    <li>Kill processes blindly</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            AEGIS AI v6.0 • Multi-Agent Consensus System • ~/ANTIGRAVITY-STACK/aegis-portal/<br>
+            Print this sheet: Cmd+P → Save as PDF
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{mdframed}
+
+\geometry{margin=1.5cm}
+\pagestyle{empty}
+
+\definecolor{aegisblue}{RGB}{0,102,204}
+\definecolor{aegisdark}{RGB}{30,30,50}
+\definecolor{aegisgray}{RGB}{100,100,100}
+\definecolor{conservator}{RGB}{200,50,50}
+\definecolor{preventer}{RGB}{50,150,50}
+\definecolor{investigator}{RGB}{50,100,200}
+
+\setmainfont{Helvetica Neue}
+
+\newcommand{\aegislogo}{%
+\begin{tikzpicture}[scale=0.5]
+\fill[aegisblue] (0,0) circle (1);
+\fill[white] (0,0.3) -- (-0.5,-0.3) -- (0.5,-0.3) -- cycle;
+\fill[white] (-0.3,0.1) rectangle (0.3,0.4);
+\end{tikzpicture}%
+}
+
+\newcommand{\cmd}[1]{\texttt{\textcolor{aegisblue}{#1}}}
+\newcommand{\agentbox}[4]{%
+\begin{mdframed}[backgroundcolor=#4!10,linewidth=0.5pt,roundcorner=3pt]
+\textbf{\textcolor{#4}{#1}} \hfill \textcolor{aegisgray}{\small #2}\\
+\small #3
+\end{mdframed}
+}
+
+\begin{document}
+
+% HEADER
+\begin{center}
+{\Huge\textcolor{aegisblue}{\aegislogo} \textbf{AEGIS AI}}\\[3pt]
+{\large v6.0 Enhanced Intelligence Reference}\\[2pt]
+{\small Resident System Guardian \textbullet{} Multi-Agent Consensus \textbullet{} Predictive Analytics}
+\end{center}
+
+\vspace{-5pt}
+\noindent\rule{\textwidth}{0.5pt}
+
+\vspace{5pt}
+
+\begin{multicols}{2}
+
+\section*{\textcolor{aegisblue}{\faUser} THE THREE AGENTS}
+
+\agentbox{CONSERVATOR}{Risk-Averse}{Waits for sustained critical issues. Acts only at 95\%+ with 5+ min duration. High confidence in waiting.}{conservator}
+
+\vspace{3pt}
+\agentbox{PREVENTER}{Proactive}{Prevents problems before they occur. Monitors velocity and trends. Early intervention at 80\%+.}{preventer}
+
+\vspace{3pt}
+\agentbox{INVESTIGATOR}{Analytical}{Finds patterns and root causes. Detects anomalies and correlations. Conservative when uncertain.}{investigator}
+
+\vspace{5pt}
+{\small\textbf{Consensus:} Agents vote with confidence-weighted scores. 50\%+ agreement required for action.}
+
+\section*{\textcolor{aegisblue}{\faTerminal} ESSENTIAL COMMANDS}
+
+\begin{tabular}{@{}p{3.2cm}p{4.3cm}@{}}
+\toprule
+\textbf{Command} & \textbf{Purpose} \\
+\midrule
+\cmd{aegis status} & Quick health check \\
+\cmd{aegis forecast} & Resource predictions \\
+\cmd{aegis agents} & See agent votes/status \\
+\cmd{aegis learn} & What Aegis learned \\
+\cmd{aegis leaks} & Memory leak detection \\
+\midrule
+\cmd{aegis purge} & Free RAM immediately \\
+\cmd{aegis clean disk} & Emergency cleanup \\
+\cmd{aegis kill zombies} & Terminate orphans \\
+\midrule
+\cmd{aegis enable auto} & Auto-actions ON \\
+\cmd{aegis disable auto} & Auto-actions OFF \\
+\cmd{aegis help} & Full command list \\
+\bottomrule
+\end{tabular}
+
+\section*{\textcolor{aegisblue}{\faLineChart} READING FORECASTS}
+
+\begin{mdframed}[backgroundcolor=green!10,linewidth=0.3pt]
+\textbf{STABLE:} "Disk stable at 45\%"\\
+$\rightarrow$ No action needed
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=yellow!10,linewidth=0.3pt]
+\textbf{WARNING:} "Disk critical in 45min"\\
+$\rightarrow$ Plan cleanup within 30min
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=red!10,linewidth=0.3pt]
+\textbf{CRITICAL:} "Disk critical in 5min"\\
+$\rightarrow$ \textbf{ACT NOW!} Run cleanup immediately
+\end{mdframed}
+
+\section*{\textcolor{aegisblue}{\faGraduationCap} TEACHING AEGIS}
+
+Aegis learns from your behavior:
+
+\begin{itemize}[leftmargin=12pt,itemsep=2pt]
+\item \textbf{Manual clean at 85\%} $\rightarrow$ Learns your threshold
+\item \textbf{Ignore alerts 3x} $\rightarrow$ Raises threshold
+\item \textbf{Actions succeed} $\rightarrow$ Agent accuracy $\uparrow$
+\item \textbf{Actions fail} $\rightarrow$ Agent accuracy $\downarrow$
+\end{itemize}
+
+Check progress: \cmd{aegis learn}
+
+\columnbreak
+
+\section*{\textcolor{aegisblue}{\faCogs} WHEN TO USE WHAT}
+
+\begin{tabular}{@{}p{3.8cm}p{3.7cm}@{}}
+\toprule
+\textbf{Situation} & \textbf{Command} \\
+\midrule
+Morning check & \cmd{aegis status} \\
+"Will I run out?" & \cmd{aegis forecast} \\
+System sluggish & \cmd{aegis leaks} then \cmd{aegis purge} \\
+Before meeting & \cmd{aegis disable auto} \\
+After meeting & \cmd{aegis enable auto} \\
+"Why did it do that?" & \cmd{aegis agents} \\
+Low disk space & \cmd{aegis clean disk} \\
+\bottomrule
+\end{tabular}
+
+\section*{\textcolor{aegisblue}{\faDashboard} AGENT ACCURACY}
+
+Watch for accuracy scores:\\[3pt]
+
+\begin{tabular}{@{}cll@{}}
+\toprule
+& \textbf{Score} & \textbf{Meaning} \\
+\midrule
+\textcolor{green!70!black}{\textbullet} & 70\%+ & Trust this agent \\
+\textcolor{yellow!70!black}{\textbullet} & 50-70\% & Learning... \\
+\textcolor{red!70!black}{\textbullet} & $<$50\% & Needs tuning \\
+\bottomrule
+\end{tabular}
+
+\vspace{5pt}
+{\small Current stats: \cmd{aegis agents}}
+
+\section*{\textcolor{aegisblue}{\faLightbulb} BEST PRACTICES}
+
+\textbf{DO:}
+\begin{itemize}[leftmargin=12pt,itemsep=1pt]
+\item Check \cmd{aegis forecast} before long tasks
+\item Let auto-actions run (they learn!)
+\item Use \cmd{aegis leaks} when RAM high
+\item Disable auto before critical work
+\end{itemize}
+
+\textbf{DON'T:}
+\begin{itemize}[leftmargin=12pt,itemsep=1pt]
+\item Panic if agents disagree (consensus protects you)
+\item Ignore critical forecasts (usually correct)
+\item Always disable auto (prevents learning)
+\item Kill processes blindly (check \cmd{aegis leaks} first)
+\end{itemize}
+
+\section*{\textcolor{aegisblue}{\faFileText} FILES & LOGS}
+
+\begin{tabular}{@{}p{3.8cm}p{3.7cm}@{}}
+\toprule
+\textbf{Path} & \textbf{Purpose} \\
+\midrule
+\texttt{\textasciitilde/aegis-portal/aegis\_daemon.py} & Main daemon \\
+\texttt{\textasciitilde/aegis-portal/aegis\_memory.json} & User memory \\
+\texttt{\textasciitilde/aegis-portal/aegis\_learning.json} & Learning data \\
+\texttt{\textasciitilde/aegis-portal/aegis\_daemon.log} & Activity logs \\
+\bottomrule
+\end{tabular}
+
+\vspace{5pt}
+View logs: \texttt{tail -f \textasciitilde/aegis-portal/aegis\_daemon.log}
+
+\section*{\textcolor{aegisblue}{\faMagic} KEY METRICS}
+
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Metric} & \textbf{Warning} & \textbf{Critical} \\
+\midrule
+Disk & 75\% & 90\% \\
+RAM & 70\% & 85\% \\
+CPU & 70\% & 90\% \\
+\bottomrule
+\end{tabular}
+
+\vspace{5pt}
+{\small Thresholds adapt based on your behavior}
+
+\end{multicols}
+
+\vspace{-10pt}
+\noindent\rule{\textwidth}{0.5pt}
+\begin{center}
+{\small\textcolor{aegisgray}{Aegis AI v6.0 \textbullet{} Multi-Agent Consensus System \textbullet{} ~/ANTIGRAVITY-STACK/aegis-portal/}}
+\end{center}
+
+\end{document}
